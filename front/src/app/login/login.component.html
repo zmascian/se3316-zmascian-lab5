@@ -1,17 +1,16 @@
 <h1>Login!</h1>
-<div class="play-container">
-    <p>Email<input type="text"></p>
-</div>
-<div class="play-container">
-    <p>Password<input type="text"><button><a href="#" routerLink="/addsong">Submit</a></button></p>
-</div>
+
+    <form [formGroup] = "logform" (ngSubmit) = "log()">
+    <p>Email<input type="text" formControlName="email" required></p>
+    <p>Password<input type="text" formControlName="password" required></p>
+    <input type = "submit" value="Submit">
+    </form>
+
+
 <h1>Register</h1>
-<div class="play-container">
-    <p>Name<input type="text"></p>
-</div>
-<div class="play-container">
-    <p>Email<input type="email"></p>
-</div>
-<div class="play-container">
-    <p>Password<input type="text"><button><a href="#" routerLink="/addsong">Submit</a></button></p>
-</div>
+<form [formGroup] = "regform" (ngSubmit) = "reg()">
+        <p>Name<input type="text" formControlName="name" required></p>
+        <p>Email<input type="text" formControlName="email" required></p>
+        <p>Password<input type="text" formControlName="password" required></p>
+        <input type = "submit" value="Submit">
+        </form>
