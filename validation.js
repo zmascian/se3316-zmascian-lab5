@@ -29,6 +29,7 @@ const songValidation = data=> {
     album: Joi.string(),
     genre: Joi.string(),
     year: Joi.number(),  
+    recentReview: Joi.string(),
     avgRating: Joi.number().required(),  
     numOfReviews: Joi.number().required() 
     });

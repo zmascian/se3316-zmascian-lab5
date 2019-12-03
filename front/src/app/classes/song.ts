@@ -4,6 +4,7 @@ export class Song{
     album: String;
     genre: String;
     year: Number;
+    recentReview: String;
     avgRating: Number;
     numOfReviews: Number;
 }

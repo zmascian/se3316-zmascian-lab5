@@ -17,6 +17,7 @@ constructor(private _http: HttpService, private _fb: FormBuilder, private _route
     album: [''],
     genre: [''],
     year: [''],
+    recentReview: [''],
     avgRating: 0,
     numOfReviews: 0
   

@@ -26,10 +26,8 @@ export class HomeComponent implements OnInit {
   }
   
   infoClick(s: Object){
-  //  this._http.getSongInfo(s).subscribe(data =>{
-
-  //  });
   this.info = s;
+  console.log(this.info);
   }
 
 }

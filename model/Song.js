@@ -21,7 +21,16 @@ const songSchema = new mongoose.Schema({
     year:{
         type: Number,
     },
+    recentReview:{
+        type: String,
+        max: 255
+    },
     avgRating:{
+        type: Number,
+        required: true,
+        max: 255
+    },
+    numOfReviews:{
         type: Number,
         required: true,
         max: 255
