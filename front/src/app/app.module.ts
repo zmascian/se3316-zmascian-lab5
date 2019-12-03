@@ -8,13 +8,15 @@ import { LoginComponent } from './login/login.component';
 import { AddsongComponent } from './addsong/addsong.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { ListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AddsongComponent
+    AddsongComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

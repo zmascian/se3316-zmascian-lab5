@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const user = require('../model/user');
+const User = require('../model/User');
 const {registerValidation, loginValidation} = require('../validation');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken')
@@ -7,34 +7,44 @@ const jwt = require('jsonwebtoken')
 
 router.post('/register', async (req,res)=>{
     //Validate date
+    console.log("made it to post");
+   
     const {error} = registerValidation(req.body);
-    if(error) {
+    if(error != null) {
         return res.status(400).send(error.details[0].message);
     }
-    
+    console.log("made it to post2");
     //Checking if the user is already in the database
-    const emailExist = await user.findOne({email: req.body.email});
+    const emailExist = await User.findOne({email: req.body.email});
+    console.log("made it to post2.5");
     if(emailExist) return res.status(400).send('Email already exist');
-    
+    console.log("made it to post3");
 //Hash paswword
-const salt = await bcrypt.gentSalt(10);
+const salt = await bcrypt.genSalt(10);
 const hashPassword = await bcrypt.hash(req.body.password, salt);
 
-
+console.log("made it to post4");
 //Create new user    
-   const u = new user({
+   let u = new User({
        name: req.body.name,
        email: req.body.email,
        password: hashPassword
-   }) 
+       
+   })
+   console.log("made it to post5");
    try{
-       const savedUser = await u.save();
-        res.send({user: u._id});           
+    console.log("made it to post5");
+        u.save();
+       console.log("made it to post5");
+        res.send(u);  
+        console.log("User Was created");         
    }catch(err){
        res.status(400).send(err);
    }
+   console.log("made it to post6");
    
 });
+
 
 
 //Login
@@ -46,7 +56,7 @@ router.post('/login', async (req,res)=>{
     }
     
     //Checking if the email exist
-    const  u = await user.findOne({email: req.body.email});
+    const  u = await User.findOne({email: req.body.email});
     if(!u) return res.status(400).send('Email is wrong');
     
     
@@ -55,10 +65,10 @@ router.post('/login', async (req,res)=>{
     if(!validPass) return res.status(400).send('Password is wrong');
     
     //Create and assign a token
-    const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET);
+    const token = jwt.sign({_id: User._id}, process.env.TOKEN_SECRET);
     res.header('auth-token', token).send(token);
     
-    res.send('Logged in');
+    
     
 });
 
