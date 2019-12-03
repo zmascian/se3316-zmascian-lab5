@@ -38,7 +38,8 @@ router.put('/putsongs', async (req,res)=>{
            album: req.body.album,
            genre: req.body.genre,
            year: req.body.year,
-           avgRating: req.body.avgRating
+           avgRating: req.body.avgRating,
+           numOfReviews: req.body.numOfReviews
            
        })
        console.log("made it to post3");
