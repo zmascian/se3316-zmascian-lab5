@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'; 
 import { User } from './classes/user';
+import { Song } from './classes/song';
 //url
 
 @Injectable({
@@ -19,5 +20,13 @@ export class HttpService {
   register(u: User) {
     console.log("yes");
     return this.http.post(this.baseUrl+"/user/register", u); 
+  }
+
+  getSongs(){
+    return this.http.get(this.baseUrl+"/songs/getsongs");
+  }
+
+  addSong(s: Song){
+    return this.http.put(this.baseUrl+"/songs/putsongs", s);
   }
 }

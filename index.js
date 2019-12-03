@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 //Import routes
 const authRoutes = require('./routes/auth');
 const postRoute = require('./routes/posts');
-const songRoutes = require('./routes/song');
+const songRoutes = require('./routes/music');
 dotenv.config();
 
 //Connect to DB

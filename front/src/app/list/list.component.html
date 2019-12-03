@@ -1,1 +1,12 @@
-<p>list works!</p>
+<h1>Songs</h1>
+
+<ul *ngIf="songs">
+  <li *ngFor="let s of songs">
+    <p class="title">{{ s.title }}</p>
+    <p class="artist">{{ s.artist }}</p>
+    <a class="album" >{{s.album}}</a>
+    <p class="genre">{{ s.genre }}</p>
+    <p class="year">{{ s.year }}</p>
+    <a class="numOfReviews" >{{s.numOfReviews}}</a>
+  </li>
+</ul>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HttpService } from '../http.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addsong',
@@ -8,19 +9,34 @@ import { HttpService } from '../http.service';
   styleUrls: ['./addsong.component.scss']
 })
 export class AddsongComponent implements OnInit {
-fdjklajfdl: FormGroup;
-  constructor(private _http: HttpService, private _fb: FormBuilder) {
-    this.fdjklajfdl = this._fb.group({
-
-
-      
-    });
-
-    
-
-   }
+addSongsForm: FormGroup;
+constructor(private _http: HttpService, private _fb: FormBuilder, private _router: Router) {
+  this.addSongsForm = this._fb.group({
+    title: ['', Validators.required],
+    artist: [''],
+    album: [''],
+    genre: [''],
+    year: [''],
+    numOfReviews: 0
+  });
+}
 
   ngOnInit() {
+  }
+
+  addSong(){
+    this._http.addSong(this.addSongsForm.value).subscribe((res: any) =>{
+      if(res.error){
+        console.log(res.error);
+        this._router.navigate(['/']);
+      }
+      else{
+        console.log("no error");
+      }
+
+    }
+  );
+
   }
 
 }

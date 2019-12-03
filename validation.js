@@ -25,11 +25,11 @@ const loginValidation = data=> {
 const songValidation = data=> {
     const schema = Joi.object({
     title: Joi.string().required(),
-    numOfReviews: Joi.number().required(),
     artist: Joi.string(),
-    ablum: Joi.string(),
-    year: Joi.number(),
-    genre: Joi.string()    
+    album: Joi.string(),
+    genre: Joi.string(),
+    year: Joi.number(),  
+    numOfReviews: Joi.number().required()  
     });
     return schema.validate(data);
 };
@@ -38,3 +38,4 @@ const songValidation = data=> {
 
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
+module.exports.songValidation = songValidation;

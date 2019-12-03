@@ -20,7 +20,6 @@ const songSchema = new mongoose.Schema({
     },
     year:{
         type: Number,
-        max: 255
     },
     numOfReviews:{
         type: Number,

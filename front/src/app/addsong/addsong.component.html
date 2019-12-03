@@ -1,1 +1,9 @@
-<p>addsong works!</p>
+<h1>Add Song!</h1>
+<form [formGroup] = "addSongForm" (ngSubmit) = "addSong()">
+        <p>Title<input type="text" formControlName="title" required></p>
+        <p>Artist<input type="text" formControlName="artist"></p>
+        <p>Album<input type="text" formControlName="album"></p>
+        <p>Genre<input type="text" formControlName="genre"></p>
+        <p>Year<input type="number" formControlName="year"></p>
+        <input type = "submit" value="Submit">
+        </form>
