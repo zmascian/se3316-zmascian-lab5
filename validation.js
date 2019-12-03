@@ -29,7 +29,7 @@ const songValidation = data=> {
     album: Joi.string(),
     genre: Joi.string(),
     year: Joi.number(),  
-    numOfReviews: Joi.number().required()  
+    avgRating: Joi.number().required()  
     });
     return schema.validate(data);
 };

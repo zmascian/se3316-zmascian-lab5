@@ -10,3 +10,10 @@
     <a class="numOfReviews" >{{s.numOfReviews}}</a>
   </li>
 </ul>
+
+<h1>Add Review</h1>
+<ul *ngIf="songs">
+        <li *ngFor="let s of songs">
+          <input type = "button" class="title" onclick="alert('hello')" value = "{{ s.title }}">
+        </li>
+        </ul>
