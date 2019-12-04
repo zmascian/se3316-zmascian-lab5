@@ -10,6 +10,14 @@
     <p class="recentReview">{{ s.recentReview }}</p>
     <p class="avgRating" >{{s.avgRating}}</p>
     <p class="numOfReviews" >{{s.numOfReviews}}</p>
+    <p class="reviews"><span (click) = "getReviews(s)"> Get all reviews</span></p>
+    <ul *ngIf="songs">
+        <li *ngFor="let r of matchingReviews">
+            <p class="name">{{ r.name}}</p>
+            <p class="comment">{{ r.comment}}</p>
+            <p class="rating" >{{r.rating}</p>
+        </li>
+    </ul>
   </li>
 </ul>
 

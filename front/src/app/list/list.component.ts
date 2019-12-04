@@ -3,6 +3,7 @@ import { HttpService } from '../http.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Song } from '../classes/song';
+import { Review } from '../classes/review';
 
 @Component({
   selector: 'app-list',
@@ -12,6 +13,8 @@ import { Song } from '../classes/song';
 export class ListComponent implements OnInit {
 
   songs: Object;
+  review: Object;
+  matchingReviews: Object;
 
 
    constructor(private _http: HttpService, private _router: Router) { 
@@ -24,6 +27,19 @@ export class ListComponent implements OnInit {
       console.log(this.songs);
     }
   );
+  }
+
+  getReviews(s:Song){
+    this._http.getReview().subscribe(data => {
+      if((<any> data).songId= (<any> s)._id){
+        this.matchingReviews = data;
+    }
+      console.log(this.matchingReviews);
+    }
+    );
+    
+
+    
   }
 
 }

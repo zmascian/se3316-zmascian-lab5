@@ -41,7 +41,8 @@ router.put('/updatesong', async(req,res)=>{
         {$set:
             {
                 avgRating: ((Number(s.avgRating) * Number(s.numOfReviews) + Number(req.body.rating))/ (Number(s.numOfReviews)+1)),
-                numOfReviews: Number(s.numOfReviews)+1
+                numOfReviews: Number(s.numOfReviews)+1,
+                recentReview: req.body.comment
             }
         },
         function(err){
@@ -53,6 +54,17 @@ router.put('/updatesong', async(req,res)=>{
         }
         
         );
+
+});
+
+router.get('/getreview', function(req,res){
+    Review.find(function(err, s){
+        if (err) return res.send(err);
+        if(s.songId = req.body._id){
+            res.json(s);
+        }
+        
+    });
 
 });
 

@@ -16,7 +16,7 @@ router.get('/getsongs', function(req,res){
 
 
 //Add song
-router.put('/putsongs', verification, async (req,res)=>{
+router.put('/putsongs', async (req,res)=>{
         //Validate    
         console.log("made it to here");
         const {error} = songValidation(req.body);

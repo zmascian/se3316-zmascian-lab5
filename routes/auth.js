@@ -11,6 +11,7 @@ router.post('/register', async (req,res)=>{
    
     const {error} = registerValidation(req.body);
     if(error != null) {
+        
         return res.status(400).send(error.details[0].message);
     }
     console.log("made it to post2");
@@ -66,9 +67,9 @@ router.post('/login', async (req,res)=>{
     
     //Create and assign a token
     const token = jwt.sign({_id: User._id}, process.env.TOKEN_SECRET);
-    res.header('auth-token', token).send(token);
-    
-    
+    console.log("success");
+    //res.send("all good");
+    res.header('auth-token', token).send({token});
     
 });
 

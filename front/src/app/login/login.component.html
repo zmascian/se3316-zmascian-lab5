@@ -1,3 +1,4 @@
+<h1>Once logged in or registered you can add a song or review</h1>
 <h1>Login!</h1>
 
     <form [formGroup] = "logform" (ngSubmit) = "log()">
@@ -14,3 +15,11 @@
         <p>Password<input type="text" formControlName="password" required></p>
         <input type = "submit" value="Submit">
         </form>
+
+<div *ngIf="confirmEmail">
+        <h1>Confirm email</h1>
+        <p class="con"><span (click) = "confirmed()"> /link</span></p>
+        <div *ngIf="link">
+                <p>Email has been validated</p>
+        </div>
+</div>

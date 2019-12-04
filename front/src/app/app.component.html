@@ -6,7 +6,7 @@
         <li><a href="#" routerLink="/">Home</a></li>
         <li><a href="#" routerLink="/login">Login</a></li>
         <li><a href="#" routerLink="/songs">Songs</a></li>
-        <li><a href="#" routerLink="/addSongs">Add Songs and Reviews</a></li>
+        <li *ngIf = "l"><a href="#" routerLink="/addSongs">Add Songs and Reviews</a></li>
       </ul>
     </nav>
   </div>
@@ -15,3 +15,4 @@
 <div class="container">
   <router-outlet></router-outlet>
 </div>
+

@@ -40,4 +40,9 @@ export class HttpService {
   updateSong(r: Review){
     return this.http.put(this.baseUrl+"/review/updatesong",r);
   }
+
+  getReview(){
+    return this.http.get(this.baseUrl+"/review/getreview");
+  }
+ 
 }

@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   
   logform: FormGroup;
   regform: FormGroup;
+  confirmEmail: Boolean;
+  link: Boolean;
   constructor(private _http: HttpService, private _fb: FormBuilder, private _fb2: FormBuilder, private _router: Router) {
     this.logform = this._fb.group({
       email: ['', Validators.required],
@@ -22,6 +24,7 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+    this.confirmEmail = false;
    }
 
   ngOnInit() {
@@ -36,6 +39,10 @@ export class LoginComponent implements OnInit {
       }
       else{
         console.log("no error");
+        console.log(localStorage.getItem('access_token'));
+        localStorage.setItem('access_token', res.token);
+        console.log(localStorage.getItem('access_token'));
+        this._router.navigate(['/addSongs']);
       }
 
     }
@@ -46,16 +53,26 @@ export class LoginComponent implements OnInit {
     console.log("here2");
     this._http.register(this.regform.value).subscribe((res: any) =>{
       if(res.error){
+        console.log('error');
         console.log(res.error);
         this._router.navigate(['/']);
       }
       else{
         console.log("no error");
+        this.confirmEmail = true;
+
       }
 
     }
+  
   );
+    
+    
 
+  }
+
+  confirmed(){
+    this.link = true;
   }
   
 
