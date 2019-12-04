@@ -12,16 +12,10 @@ import { Song } from '../classes/song';
 export class ListComponent implements OnInit {
 
   songs: Object;
-  s: Song;
-  addReviewForm: FormGroup;
 
-   constructor(private _http: HttpService, private _fb: FormBuilder, private _router: Router) { 
-    this.addReviewForm = this._fb.group({
-      comment: ['', Validators.required],
-      rating: [''],
-      name: [''],
-      songId: ['']
-    });
+
+   constructor(private _http: HttpService, private _router: Router) { 
+   
    }
 
   ngOnInit() {
@@ -31,26 +25,5 @@ export class ListComponent implements OnInit {
     }
   );
   }
-
-  revClick(s: Song){
-    this.s = s;
-    console.log(this.s);
-    }
-
-  addReview(){
-      
-      this._http.addReview(this.s, this.addReviewForm.value).subscribe((res: any) =>{
-        if(res.error){
-          console.log(res.error);
-          this._router.navigate(['/']);
-        }
-        else{
-          console.log("no error");
-        }
-  
-      }
-    );
-  
-    }
 
 }

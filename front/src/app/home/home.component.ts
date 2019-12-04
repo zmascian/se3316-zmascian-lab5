@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
 
    constructor(private _http: HttpService) {
     this.info = '';
+    
     }
 
   ngOnInit() {

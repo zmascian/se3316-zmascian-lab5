@@ -1,6 +1,6 @@
 export class Review{
-    name: string;
-    comment: string;
+    name: String;
+    comment: String;
     rating: Number;
-    songId: string;
+    songId: String;
 }

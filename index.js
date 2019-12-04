@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const postRoute = require('./routes/posts');
 const songRoutes = require('./routes/music');
+const reviewRoute = require('./routes/review');
 dotenv.config();
 
 //Connect to DB
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use('/api/user', authRoutes);
 app.use('/api/songs', songRoutes);
 app.use('/api/posts', postRoute);
+app.use('/api/review', reviewRoute);
 
 app.listen(3000, () => console.log('Server up and running'));
 

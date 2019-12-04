@@ -7,3 +7,20 @@
         <p>Year<input type="number" formControlName="year"></p>
         <input type = "submit" value="Submit">
         </form>
+
+<h1>Add Review For:</h1>
+<ul *ngIf="songs">
+        <li *ngFor="let s of songs">
+          <!-- <input type = "button" class="title" onclick="alert('hello')" value = "{{ s.title }}"> -->
+          <p class="rev"><span (click) = "revClick(s)"> {{s.title}}</span></p>
+        </li>
+        </ul>
+
+<div *ngIf="s">
+<h1>Review</h1>
+<form [formGroup] = "addReviewForm" (ngSubmit) = "addReview()">
+        <p>Comment<input type="text" formControlName="comment" required></p>
+        <p>Rating<input type="Number" max = 5 formControlName="rating"></p>
+        <input type = "submit" value="Submit">
+        </form>
+    </div>

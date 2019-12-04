@@ -36,8 +36,19 @@ const songValidation = data=> {
     return schema.validate(data);
 };
 
+const reviewValidation = data=> {
+    const schema = Joi.object({
+    name: Joi.string(),
+    comment: Joi.string(),
+    rating: Joi.number(),
+    songId: Joi.string().required()
+    });
+    return schema.validate(data);
+};
+
 
 
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
 module.exports.songValidation = songValidation;
+module.exports.reviewValidation = reviewValidation;

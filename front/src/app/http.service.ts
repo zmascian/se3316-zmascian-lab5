@@ -32,6 +32,12 @@ export class HttpService {
   }
 
   addReview(s: Song, r: Review){
-    return this.http.put(this.baseUrl+"/songs/putsongs", s);
+    r.songId = (<any> s)._id;
+    r.name = "zem44@live.ca"; //token here
+    return this.http.put(this.baseUrl+"/review/putreview", r);
+  }
+
+  updateSong(r: Review){
+    return this.http.put(this.baseUrl+"/review/updatesong",r);
   }
 }

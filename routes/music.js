@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const Song = require('../model/Song');
 const {songValidation} = require('../validation');
+const verification = require('./verifyToken');
 
 //Get all songs
 router.get('/getsongs', function(req,res){
-
-
         Song.find(function(err, s){
             if (err) return res.send(err);
             res.json(s);
@@ -14,10 +13,12 @@ router.get('/getsongs', function(req,res){
     // res.json(Song.find({}));
 });
 
-//Get all songs
-router.put('/putsongs', async (req,res)=>{
+
+
+//Add song
+router.put('/putsongs', verification, async (req,res)=>{
         //Validate    
-        console.log("made it to post3");
+        console.log("made it to here");
         const {error} = songValidation(req.body);
         if(error != null) {
             console.log("made it to post3");
@@ -38,6 +39,7 @@ router.put('/putsongs', async (req,res)=>{
            album: req.body.album,
            genre: req.body.genre,
            year: req.body.year,
+           recentReview: req.body.recentReview,
            avgRating: req.body.avgRating,
            numOfReviews: req.body.numOfReviews
            
