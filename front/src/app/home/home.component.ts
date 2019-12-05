@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
 
   songs: Object;
   info: Object;
+  dm: Boolean;
 
 
    constructor(private _http: HttpService) {
@@ -31,6 +32,10 @@ export class HomeComponent implements OnInit {
   infoClick(s: Object){
   this.info = s;
   console.log(this.info);
+  }
+
+  dmca(){
+    this.dm = true;
   }
 
 }
