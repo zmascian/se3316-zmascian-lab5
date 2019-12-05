@@ -14,7 +14,8 @@ export class ListComponent implements OnInit {
 
   songs: Object;
   review: Object;
-  matchingReviews: Object;
+  matchingReviews: Review;
+  rSong: Song;
 
 
    constructor(private _http: HttpService, private _router: Router) { 
@@ -22,6 +23,7 @@ export class ListComponent implements OnInit {
    }
 
   ngOnInit() {
+//Get all songs
     this._http.getSongs().subscribe(data => {
       this.songs = data
       console.log(this.songs);
@@ -30,16 +32,14 @@ export class ListComponent implements OnInit {
   }
 
   getReviews(s:Song){
+    //Get all reviews
+    this.rSong = s;
     this._http.getReview().subscribe(data => {
-      if((<any> data).songId= (<any> s)._id){
-        this.matchingReviews = data;
-    }
-      console.log(this.matchingReviews);
+      this.review = data
+      console.log(this.review);
     }
     );
-    
-
-    
+     
   }
 
 }

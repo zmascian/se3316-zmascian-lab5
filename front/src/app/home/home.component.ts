@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     }
 
   ngOnInit() {
+    //Gets all songs
     this._http.getSongs().subscribe(data => {
       this.songs = data
       console.log(this.songs);
@@ -26,6 +27,7 @@ export class HomeComponent implements OnInit {
   );
   }
   
+  //info is saved as the song the user selects to view its attributes
   infoClick(s: Object){
   this.info = s;
   console.log(this.info);

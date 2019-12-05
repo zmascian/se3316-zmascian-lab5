@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { User } from './classes/user';
 import { Song } from './classes/song';
 import { Review } from './classes/review';
-//url
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,8 @@ export class HttpService {
   }
 
   addSong(s: Song){
+    s.numOfReviews = 1;
+    
     return this.http.put(this.baseUrl+"/songs/putsongs", s);
   }
 

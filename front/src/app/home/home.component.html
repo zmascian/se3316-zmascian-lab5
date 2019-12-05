@@ -1,21 +1,26 @@
 <h1>Welcome to Zackify</h1>
 <p>A new music reviewing web app that allows browsing reviews, creating, editing and saving new reviews, creating and managing playlists, sharing playlists with other users and commenting public playlists</p>
 <ul *ngIf="songs">
+  <!-- displays less than ten songs -->
         <li *ngFor="let s of songs; let i =index">
-            <div *ngIf = "i<10">
+            <div *ngIf = "i<12">
           <p class="title"><span (click) = "infoClick(s)"> {{s.title}}</span></p>
         </div>
         </li>
       </ul>
       <h2>Song Infomation</h2>
-      <p>{{info.artist}}<br>{{info.album}}<br>{{info.genre}}<br>{{info.year}}<br>{{info.recentReview}}<br>{{info.avgRating}}<br>{{info.numOfReviews}}</p>
-List of songs
+      <!-- displays the infomation based on which song the user selects -->
+      <p>Artist: {{info.artist}}<br>
+        Album: {{info.album}}<br>
+        Genre: {{info.genre}}<br>
+        Year: {{info.year}}<br>
+        Most Recent Review: {{info.recentReview}}<br>
+        Average Rating: {{info.avgRating}}<br>
+        Total Number of Reviews: {{info.numOfReviews}}</p>
+
 
 <div class="play-container">
-    <p>Search songs based on keywords<input type="text"><button><a href="#" routerLink="/notLog">Search</a></button></p>
+    <p>Search songs based on keywords Search</p>
 </div>
-Keywords are matched with all attributes of the item (see ID3v1 below).
-Ability to view all information on a song by clicking or expanding (shows all attributes, most recent review, the number of reviews and the average rating.
-<h1>Songs</h1>
 
 

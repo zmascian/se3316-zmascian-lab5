@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   regform: FormGroup;
   confirmEmail: Boolean;
   link: Boolean;
+  //Generates form groups
   constructor(private _http: HttpService, private _fb: FormBuilder, private _fb2: FormBuilder, private _router: Router) {
     this.logform = this._fb.group({
       email: ['', Validators.required],
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
-
+//Called when user whats to log in
   log(){
     console.log("here3");
     this._http.login(this.logform.value).subscribe((res: any) =>{
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit {
     }
   );
   }
-
+//User registration
   reg(){
     console.log("here2");
     this._http.register(this.regform.value).subscribe((res: any) =>{
@@ -60,6 +61,7 @@ export class LoginComponent implements OnInit {
       else{
         console.log("no error");
         this.confirmEmail = true;
+        this._router.navigate(['/addSongs']);
 
       }
 

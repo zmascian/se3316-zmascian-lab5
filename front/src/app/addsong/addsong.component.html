@@ -1,3 +1,4 @@
+<!-- user inputs song information -->
 <h1>Add Song!</h1>
 <form [formGroup] = "addSongsForm" (ngSubmit) = "addSong()">
         <p>Title<input type="text" formControlName="title" required></p>
@@ -5,17 +6,20 @@
         <p>Album<input type="text" formControlName="album"></p>
         <p>Genre<input type="text" formControlName="genre"></p>
         <p>Year<input type="number" formControlName="year"></p>
+        <p>Comment<input type = "text" formControlName= "recentReview"></p>
+        <p>Rating<input type = "number" formControlName= "avgRating"></p>
         <input type = "submit" value="Submit">
         </form>
 
+        <!-- useer adds review info for added song -->
 <h1>Add Review For:</h1>
 <ul *ngIf="songs">
         <li *ngFor="let s of songs">
-          <!-- <input type = "button" class="title" onclick="alert('hello')" value = "{{ s.title }}"> -->
           <p class="rev"><span (click) = "revClick(s)"> {{s.title}}</span></p>
         </li>
         </ul>
 
+        <!-- user inputs review for existing song -->
 <div *ngIf="s">
 <h1>Review</h1>
 <form [formGroup] = "addReviewForm" (ngSubmit) = "addReview()">

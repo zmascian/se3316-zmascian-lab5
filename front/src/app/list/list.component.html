@@ -1,23 +1,28 @@
 <h1>Songs</h1>
 
+<!-- list every song in data base -->
 <ul *ngIf="songs">
   <li *ngFor="let s of songs">
-    <p class="title">{{ s.title }}</p>
-    <p class="artist">{{ s.artist }}</p>
-    <p class="album" >{{s.album}}</p>
-    <p class="genre">{{ s.genre }}</p>
-    <p class="year">{{ s.year }}</p>
-    <p class="recentReview">{{ s.recentReview }}</p>
-    <p class="avgRating" >{{s.avgRating}}</p>
-    <p class="numOfReviews" >{{s.numOfReviews}}</p>
-    <p class="reviews"><span (click) = "getReviews(s)"> Get all reviews</span></p>
-    <ul *ngIf="songs">
-        <li *ngFor="let r of matchingReviews">
-            <p class="name">{{ r.name}}</p>
-            <p class="comment">{{ r.comment}}</p>
-            <p class="rating" >{{r.rating}</p>
-        </li>
-    </ul>
+    <p class="title">Title: {{ s.title }}</p>
+    <p class="artist">Artist: {{ s.artist }}</p>
+    <p class="album" >Album: {{s.album}}</p>
+    <p class="genre">Genre: {{ s.genre }}</p>
+    <p class="year">Year: {{ s.year }}</p>
+    <p class="recentReview">Most Recent review: {{ s.recentReview }}</p>
+    <p class="avgRating" >Average Rating: {{s.avgRating}}</p>
+    <p class="numOfReviews" >Total Number of Reviews: {{s.numOfReviews}}</p>
+    <p class="reviews"><span (click) = "getReviews(s)"> Get all reviews for this song</span></p>
   </li>
 </ul>
+
+<!-- view all reviews of a user selected song -->
+<h2>All Reviews</h2>
+<ul>
+  <li *ngFor = "let r of review">
+    <p *ngIf = "r.songId == rSong._id"> Name: {{ r.name}}<br>
+      Comment: {{ r.comment}}<br>
+      Rating: {{r.rating}}</p>
+  </li>
+</ul>
+
 
